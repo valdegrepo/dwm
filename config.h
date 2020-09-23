@@ -1,5 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -8,15 +6,28 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const char *fonts[]          = { "Iosevka Term:size=15" };
 static const char dmenufont[]       = "Iosevka Term:size=15";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+
+static const char col_background[]  = "#282a36";
+static const char col_foreground[]  = "#f8f8f2";
+static const char col_gray[]        = "#44475a";
+static const char col_cyan[]        = "#8be9fd";
+static const char col_green[]       = "#50fa7b";
+static const char col_orange[]      = "#ffb86c";
+static const char col_pink[]        = "#ff79c6";
+static const char col_red[]         = "#ff5555";
+static const char col_violet[]      = "#bd93f9";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+
+
+  /*                    fg              bg               border   */
+  [SchemeNorm]      = { col_foreground, col_background, col_background },
+  [SchemeSel]       = { col_foreground, col_background, col_violet  },
+  [SchemeStatus]    = { col_gray,       col_violet, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+  [SchemeTagsSel]   = { col_foreground, col_red, "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+  [SchemeTagsNorm]  = { col_foreground, col_gray, "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+  [SchemeInfoSel]   = { col_foreground, col_background, "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+  [SchemeInfoNorm]  = { col_foreground, col_background, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -31,6 +42,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,                 0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,                 1 << 8,       0,           -1 },
 	{ NULL,       NULL,       "Picture-in-Picture", ~0,           1,           -1 },
+	{ NULL,       NULL,       "*noVNC*",  1 << 8,       1,           -1 },
 };
 
 /* layout(s) */
@@ -40,8 +52,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "",      tile },    /* first entry is default */
+	{ "ﱟ",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -58,7 +70,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_gray, "-sb", col_violet, "-sf", col_foreground, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
