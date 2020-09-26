@@ -23,11 +23,11 @@ static const char *colors[][3]      = {
   /*                    fg              bg               border   */
   [SchemeNorm]      = { col_foreground, col_background, col_background },
   [SchemeSel]       = { col_foreground, col_background, col_violet  },
-  [SchemeStatus]    = { col_gray,       col_violet, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-  [SchemeTagsSel]   = { col_foreground, col_red, "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-  [SchemeTagsNorm]  = { col_foreground, col_gray, "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-  [SchemeInfoSel]   = { col_foreground, col_background, "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-  [SchemeInfoNorm]  = { col_foreground, col_background, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+  [SchemeStatus]    = { col_foreground, col_pink,       "#000000"  },           // Statusbar right {text,background,not used but cannot be empty}
+  [SchemeTagsSel]   = { col_foreground, col_red,        "#000000"  },           // Tagbar left selected {text,background,not used but cannot be empty}
+  [SchemeTagsNorm]  = { col_foreground, col_gray,       "#000000"  },           // Tagbar left unselected {text,background,not used but cannot be empty}
+  [SchemeInfoSel]   = { col_foreground, col_background, "#000000"  },       // infobar middle  selected {text,background,not used but cannot be empty}
+  [SchemeInfoNorm]  = { col_foreground, col_background, "#000000"  },       // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -42,7 +42,6 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,                 0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,                 1 << 8,       0,           -1 },
 	{ NULL,       NULL,       "Picture-in-Picture", ~0,           1,           -1 },
-	{ NULL,       NULL,       "*noVNC*",  1 << 8,       1,           -1 },
 };
 
 /* layout(s) */
